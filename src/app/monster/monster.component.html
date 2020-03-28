@@ -1,1 +1,11 @@
-<p>monster works!</p>
+<p>Monster: {{name}} {{healthPoints}} HP</p>
+<p>{{description}}</p>
+<p>Attack: {{attack}}</p>
+<p>Defense: {{defense}}</p>
+<p>Speed: {{speed}}</p>
+<p>Moves:</p>
+<ul>
+    <li *ngFor="let move of moves">
+        <app-move [name]="move"></app-move>
+    </li>
+</ul>
