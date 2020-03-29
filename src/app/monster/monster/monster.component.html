@@ -1,11 +1,20 @@
-<p>Monster: {{name}} {{healthPoints}} HP</p>
-<p>{{description}}</p>
-<p>Attack: {{attack}}</p>
-<p>Defense: {{defense}}</p>
-<p>Speed: {{speed}}</p>
-<p>Moves:</p>
-<ul>
-    <li *ngFor="let move of moves">
-        <app-move [name]="move"></app-move>
-    </li>
-</ul>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{monster.name}}</mat-card-title>
+        <mat-card-subtitle>{{monster.healthPoints}} HP</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>{{monster.description}}</p>
+        <p>Attack: {{monster.attack}}</p>
+        <p>Defense: {{monster.defense}}</p>
+        <p>Speed: {{monster.speed}}</p>
+        <h3 mat-subheader>Moves:</h3>
+        <mat-list>
+            <mat-list-item *ngFor="let move of monster.moves">
+                <app-move [name]="move"></app-move>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>
+
+

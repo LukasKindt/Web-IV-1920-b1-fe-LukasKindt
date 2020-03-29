@@ -1,0 +1,33 @@
+<mat-card>
+    <mat-form-field>
+      <input matInput placeholder="id" type="number"  
+      #newmonsterid />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="name" type="text"  
+      #newmonstername />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="description" type="text"  
+      #newmonsterdescription />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="attack" type="number"  
+      #newmonsterattack />
+      <mat-form-field>
+        <input matInput placeholder="defense" type="number"  
+        #newmonsterdefense />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="HP" type="number"  
+        #newmonsterhealth />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="speed" type="number"  
+        #newmonsterspeed />
+      </mat-form-field>
+    </mat-form-field>
+    <button (click)="addMonster(newmonsterid, newmonstername, newmonsterdescription, newmonsterattack, newmonsterdefense, newmonsterhealth, newmonsterspeed)" mat-raised-button>
+      add monster
+    </button>
+  </mat-card>
