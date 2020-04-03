@@ -1,8 +1,8 @@
 <div fxLayout="column" fxLayoutGap="2%">
-  <app-add-monster (newMonster)="addNewMonster($event)"></app-add-monster>
+  <!--<app-add-monster (newMonster)="addNewMonster($event)"></app-add-monster>-->
   <mat-card>
     <mat-form-field>
-      <input matInput (keyup)='filterMonster$.next($event.target.value)' placeholder="filter monster name..." #filter type="text" #filter />
+      <input matInput (keyup)='filterMonster$.next($event.target.value)' placeholder="filter monster name..." #filter type="text" #filter data-cy="filterInput" />
     </mat-form-field>
   </mat-card>
   <div *ngIf="(monsters$ | async) as monsters; else loadingOrError">
@@ -13,9 +13,10 @@
   fxLayoutAlign="start"
 >
   <div 
+    class="monster"  
     *ngFor="let localMonster of (monsters | monsterFilter: filterMonsterName)"
   >
-    <app-monster [monster]="localMonster"></app-monster>
+    <app-monster [monster]="localMonster" data-cy="monsterCard"></app-monster>
   </div>
 </div>
 </div>

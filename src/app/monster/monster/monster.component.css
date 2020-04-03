@@ -1,0 +1,8 @@
+mat-list{
+    display: flex;
+}
+
+mat-list-item{
+    border: 1pt solid black;
+    margin: 0.2rem;
+}

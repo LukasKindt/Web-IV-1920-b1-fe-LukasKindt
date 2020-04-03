@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MonsterDataService} from '../../monster-data.service';
+import {MonsterDataService} from '../monster-data.service';
 import {Subject, Observable, EMPTY} from 'rxjs';
 import {distinctUntilChanged, debounceTime, map, filter, catchError} from 'rxjs/operators';
 import { Monster } from '../monster.model';
@@ -17,7 +17,15 @@ export class MonsterListComponent implements OnInit {
   private _fetchMonsters$: Observable<Monster[]>;
   public errorMessage: string = '';
 
-  constructor(private _monsterDataService: MonsterDataService) {}
+  constructor(private _monsterDataService: MonsterDataService) {
+    this.filterMonster$
+    .pipe(
+      distinctUntilChanged(),
+      debounceTime(400),
+      map(val => val.toLowerCase())
+    )
+    .subscribe(val => (this.filterMonsterName = val));
+  }
 
   applyFilter(filter: string){
     this.filterMonsterName = filter;
@@ -25,10 +33,6 @@ export class MonsterListComponent implements OnInit {
 
   get monsters$(): Observable<Monster[]> {
     return this._fetchMonsters$;
-  }
-
-  addNewMonster(monster){
-    this._monsterDataService.addNewMonster(monster);
   }
 
   ngOnInit(): void{

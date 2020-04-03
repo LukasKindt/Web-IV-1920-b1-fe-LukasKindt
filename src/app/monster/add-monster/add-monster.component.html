@@ -1,0 +1,69 @@
+<mat-card>
+  <mat-card-title>Add Monster</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="monster" (ngSubmit='onSubmit()')>
+      <div>
+    <mat-form-field>
+      <input matInput aria-label="name" placeholder="name" type="text"  
+      formControlName="name" required #spy/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput aria-label="description" placeholder="description" type="text"  
+      formControlName="description" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput aria-label="attack" placeholder="attack" type="number"  
+      formControlName="attack" />
+    </mat-form-field>
+      <mat-form-field>
+        <input matInput aria-label="defense" placeholder="defense" type="number"  
+        formControlName="defense" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput aria-label="hp" placeholder="HP" type="number"  
+        formControlName="hp" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput aria-label="speed" placeholder="speed" type="number"  
+        formControlName="speed" />
+      </mat-form-field>
+      </div>
+        <mat-error
+        *ngIf="monster.get('speed')['errors'] && monster.get('speed').touched"
+      >
+        {{ getErrorMessage(monster.get('speed')['errors']) }}
+      </mat-error>
+      
+      <div formArrayName="moves" *ngFor="let item of monster.get('moves')['controls']; let i = index">
+        <div [formGroupName]="i">
+          <mat-form-field>
+            <input matInput aria-label="move name" placeholder="name" type="text"  
+            formControlName="name" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput aria-label="move powerPoints" placeholder="powerPoints" type="number"  
+            formControlName="powerPoints" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput aria-label="move basePower" placeholder="basePower" type="number"  
+            formControlName="basePower" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput aria-label="move accuracy" placeholder="accuracy" type="number"  
+            formControlName="accuracy" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput aria-label="move effect" placeholder="effect" type="text"  
+            formControlName="effect" />
+          </mat-form-field>
+        </div>
+        <mat-error *ngIf="item.errors && item.get('name').touched">
+          {{ getErrorMessage(item.errors) }}
+        </mat-error>
+      </div>
+    <button type='submit' mat-raised-button [disabled]="!monster.valid">
+      add monster
+    </button>
+  </form>
+  </mat-card-content>
+  </mat-card>

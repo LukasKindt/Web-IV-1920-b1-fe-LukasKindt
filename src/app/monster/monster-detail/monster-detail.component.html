@@ -1,4 +1,4 @@
-<mat-card>
+  <mat-card>
     <mat-card-header>
         <mat-card-title>{{monster.name}}</mat-card-title>
         <mat-card-subtitle>{{monster.healthPoints}} HP</mat-card-subtitle>
@@ -11,7 +11,6 @@
         <h3 mat-subheader>Moves:</h3>
         <mat-list>
             <mat-list-item *ngFor="let move of monster.moves">
-                <p></p>
                 <app-move [move]="move"></app-move>
             </mat-list-item>
         </mat-list>

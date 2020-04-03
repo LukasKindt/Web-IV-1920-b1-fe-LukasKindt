@@ -1,3 +1,5 @@
+import { Move, MoveJson } from './move.model';
+
 interface  MonsterJson{
   id: number;
   name: string;
@@ -6,29 +8,35 @@ interface  MonsterJson{
   defense: number;
   healthPoints: number;
   speed: number;
-  moves: string[];
+  moves: MoveJson[];
 }
 
 export class Monster {
+    private _id: number;
     constructor(
-      private _id: number,
       private _name: string,
       private _description: string,
       private _attack: number,
       private _defense: number,
       private _healthPoints: number,
       private _speed: number,
-      private _moves = new Array<string>()
+      private _moves = new Array<Move>()
     ) {}
 
     static fromJSON(json: MonsterJson): Monster{
-        const rec = new Monster(json.id, json.name, json.description, json.attack, json.defense, json.healthPoints, json.speed, json.moves);
-        return rec;
+        const mon = new Monster(json.name, json.description, json.attack, json.defense, json.healthPoints, json.speed, json.moves.map(Move.fromJSON));
+        return mon;
     }
 
     toJSON(): MonsterJson {
         return <MonsterJson>{
-          name: this.name
+          name: this.name,
+          description: this.description,
+          attack: this.attack,
+          defense: this.defense,
+          healthPoints: this.healthPoints,
+          speed: this.speed,
+          moves: this.moves.map(mov => mov.toJSON())
         };
       }
   
@@ -60,11 +68,11 @@ export class Monster {
         return this._speed;
     }
 
-    get moves(): string[]{
+    get moves(): Move[]{
         return this._moves;
     }
    
-    addIngredient(name: string, amount?: number, unit?: string) {
-      this._moves.push(`${amount || 1} ${unit || ''} ${name}`);
+    addMove(name: string, powerPoints: number, basePower: number, accuracy: number, effect: string) {
+      this._moves.push(new Move(name, powerPoints, basePower, accuracy, effect));
     }
   }

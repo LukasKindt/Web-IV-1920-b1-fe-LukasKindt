@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Move } from '../move.model';
 
 @Component({
   selector: 'app-move',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./move.component.css']
 })
 export class MoveComponent implements OnInit {
-  @Input() name: string;
+  @Input() move: Move;
 
   constructor() { }
 

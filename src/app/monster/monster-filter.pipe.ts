@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Monster } from './monster/monster.model';
+import { Monster } from './monster.model';
 
 @Pipe({
   name: 'monsterFilter',

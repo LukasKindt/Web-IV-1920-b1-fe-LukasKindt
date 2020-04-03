@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Identifiers } from '@angular/compiler';
-import { Monster } from './monster.model';
+import { Monster } from '../monster.model';
+import {  MonsterDataService } from '../monster-data.service'
 
 @Component({
   selector: 'app-monster',
@@ -10,9 +11,13 @@ import { Monster } from './monster.model';
 export class MonsterComponent implements OnInit {
   @Input() public monster: Monster;
 
-  constructor() {}
+  constructor(private _monsterDataService: MonsterDataService) {}
 
   ngOnInit(): void {
+  }
+
+  deleteMonster(){
+    this._monsterDataService.deleteMonster(this.monster);
   }
 
 }
