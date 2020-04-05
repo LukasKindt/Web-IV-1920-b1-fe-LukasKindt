@@ -6,13 +6,16 @@ export interface MoveJson{
     effect: string;
 }
 export class Move{
+    private _currentPp;
     constructor(
         private _name: string,
-        private  _powerPoints: number,
+        private _powerPoints: number,
         private _basePower: number,
         private _accuracy: number,
         private _effect: string
-    ){}
+    ){
+        this._currentPp = _powerPoints;
+    }
 
     static fromJSON(json: MoveJson): Move {
         const mov = new Move(json.name, json.powerPoints, json.basePower, json.accuracy, json.effect);
@@ -26,6 +29,10 @@ toJSON(): MoveJson{
 
 get name(){
     return this._name;
+}
+
+get currentPp(){
+    return this._currentPp;
 }
 
 get powerPoints(){

@@ -12,12 +12,12 @@ import {
     providedIn: 'root'
   })
   export class MonsterResolver implements Resolve<Monster> {
-    constructor(private recipeService: MonsterDataService) {}
+    constructor(private monsterService: MonsterDataService) {}
   
     resolve(
       route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot
     ): Observable<Monster> {
-      return this.recipeService.getMonster$(route.params['id']);
+      return this.monsterService.getMonster$(route.params['id']);
     }
   }

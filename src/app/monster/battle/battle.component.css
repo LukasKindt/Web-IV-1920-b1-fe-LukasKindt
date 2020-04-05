@@ -1,0 +1,9 @@
+.battle{
+    display: flex;
+}
+
+.battleMove{
+    border: 1pt solid black;
+    margin: 0.5rem;
+    padding: 1rem;
+}

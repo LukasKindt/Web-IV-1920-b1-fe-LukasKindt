@@ -1,0 +1,34 @@
+<div class="battle">
+<mat-card>
+    <mat-card-header>
+        <h2>{{monster1.name}}</h2>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="monsterHealth">
+            <progress id="health" value="{{monster1.currentHp}}" max="{{monster1.healthPoints}}"></progress>
+            <label for="health">{{monster1.currentHp}}/{{monster1.healthPoints}} HP</label>
+        </div>
+        <p>{{monster1.description}}</p>
+            <article class="battleMove" *ngFor="let move of monster1.moves">
+                <p>{{move.name}}</p>
+                <p>{{move.currentPp}}/{{move.powerPoints}}</p>
+            </article>
+    </mat-card-content>
+</mat-card>
+<mat-card>
+    <mat-card-header>
+        <h2>{{monster2.name}}</h2>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="monsterHealth">
+            <progress id="health" value="{{monster2.currentHp}}" max="{{monster1.healthPoints}}"></progress>
+            <label for="health">{{monster2.currentHp}}/{{monster2.healthPoints}} HP</label>
+        </div>
+        <p>{{monster2.description}}</p>
+            <article class="battleMove" *ngFor="let move of monster2.moves">
+                <p>{{move.name}}</p>
+                <p>{{move.currentPp}}/{{move.powerPoints}}</p>
+            </article>
+    </mat-card-content>
+</mat-card>
+</div>

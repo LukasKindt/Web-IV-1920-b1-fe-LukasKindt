@@ -4,6 +4,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SelectivePreloadStrategy } from './SelectivePreloadStrategy';
+import { MonsterListComponent } from './monster/monster-list/monster-list.component';
+import { AddMonsterComponent } from './monster/add-monster/add-monster.component';
+import { MonsterDetailComponent } from './monster/monster-detail/monster-detail.component';
+import { MonsterResolver } from './monster/MonsterResolver';
 
 const appRoutes: Routes = [
   {

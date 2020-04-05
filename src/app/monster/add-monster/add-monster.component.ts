@@ -28,24 +28,29 @@ export class AddMonsterComponent implements OnInit {
     private _monsterDataService: MonsterDataService
   ) { }
 
-  get  moves(): FormArray {
+  get moves(): FormArray {
     return <FormArray>this.monster.get('moves');
   }
 
   ngOnInit(): void {
     this.monster = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
+      description: [''],
+      attack: [''],
+      defense: [''],
+      hp: [''],
+      speed: [''],
       moves: this.fb.array([this.createMoves()])    
     });
 
     this.moves.valueChanges
     .pipe(debounceTime(400), distinctUntilChanged())
-    .subscribe(ingList => {
-      const lastElement = ingList[ingList.length - 1];
-      if (lastElement.name && lastElement.name.length > 2){
+    .subscribe(movList => {
+      const lastElement = movList[movList.length - 1];
+      if (lastElement.name && lastElement.name.length > 2 && movList.length < 4){
       this.moves.push(this.createMoves());
-    } else if (ingList.length >= 2) {
-      const secondToLast = ingList[ingList.length - 2];
+    } else if (movList.length >= 2) {
+      const secondToLast = movList[movList.length - 2];
       if (
         !lastElement.name &&
         !lastElement.powerPoints &&
@@ -82,10 +87,15 @@ export class AddMonsterComponent implements OnInit {
     let moves = this.monster.value.moves.map(Move.fromJSON);
     moves = moves.filter(mov => mov.name.length > 2);
     this._monsterDataService.addNewMonster(
-      new Monster(this.monster.value.name, this.monster.value.description, this.monster.value.attack, this.monster.value.defense, this.monster.value.hp, this.monster.value.speed)
+      new Monster(this.monster.value.name, this.monster.value.description, this.monster.value.attack, this.monster.value.defense, this.monster.value.hp, this.monster.value.speed, moves)
     );
     this.monster = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
+      description: [''],
+      attack: [''],
+      defense: [''],
+      hp: [''],
+      speed: [''],
       moves: this.fb.array([this.createMoves()])
     });
   }

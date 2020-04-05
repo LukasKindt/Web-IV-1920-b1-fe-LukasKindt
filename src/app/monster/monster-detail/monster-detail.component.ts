@@ -17,7 +17,7 @@ export class MonsterDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.data.subscribe(item => (this.monster = item['monster']));
+    this.route.data.subscribe(item => (console.log(item), this.monster = item['monster']));
   }
 
 }

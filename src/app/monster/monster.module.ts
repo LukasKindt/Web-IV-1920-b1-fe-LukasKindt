@@ -11,6 +11,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MonsterDetailComponent } from './monster-detail/monster-detail.component';
 import { MonsterResolver } from './MonsterResolver';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BattleComponent } from './battle/battle.component';
 
 const routes: Routes = [
   { path: 'list', component: MonsterListComponent },
@@ -18,8 +19,9 @@ const routes: Routes = [
   {
     path: 'detail/:id',
     component: MonsterDetailComponent,
-    resolve: { recipe: MonsterResolver }
-  }
+    resolve: { monster: MonsterResolver }
+  },
+  { path: 'battle', component: BattleComponent }
 ];
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ const routes: Routes = [
     MonsterListComponent,
     AddMonsterComponent,
     MonsterFilterPipe,
-    MonsterDetailComponent
+    MonsterDetailComponent,
+    BattleComponent
   ],
   imports: [
     CommonModule,

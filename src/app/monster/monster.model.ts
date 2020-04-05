@@ -13,6 +13,7 @@ interface  MonsterJson{
 
 export class Monster {
     private _id: number;
+    private _currentHp: number;
     constructor(
       private _name: string,
       private _description: string,
@@ -21,7 +22,9 @@ export class Monster {
       private _healthPoints: number,
       private _speed: number,
       private _moves = new Array<Move>()
-    ) {}
+    ) {
+      this._currentHp = _healthPoints;
+    }
 
     static fromJSON(json: MonsterJson): Monster{
         const mon = new Monster(json.name, json.description, json.attack, json.defense, json.healthPoints, json.speed, json.moves.map(Move.fromJSON));
@@ -58,6 +61,10 @@ export class Monster {
 
     get defense(): number{
         return this._defense;
+    }
+
+    get currentHp(): number{
+      return this._currentHp;
     }
 
     get healthPoints(): number{

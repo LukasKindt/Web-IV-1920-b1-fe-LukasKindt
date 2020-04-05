@@ -1,5 +1,6 @@
 mat-list{
     display: flex;
+    flex-flow: wrap;
 }
 
 mat-list-item{
