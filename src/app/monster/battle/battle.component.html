@@ -1,5 +1,5 @@
 <section id="battle" class="battle">
-<mat-card id="monster1Screen">
+<mat-card id="monster1Screen" class="monsterScreen">
     <mat-card-header>
         <h2>{{monster1.name}}</h2>
     </mat-card-header>
@@ -9,21 +9,21 @@
             <label for="health">{{monster1.currentHp}}/{{monster1.healthPoints}} HP</label>
         </div>
         <p>{{monster1.description}}</p>
-        <section id="battleMoves1">
+        <section id="battleMoves1" class="battleMoves">
         </section>
     </mat-card-content>
 </mat-card>
-<mat-card id="monster2Screen">
+<mat-card id="monster2Screen" class="monsterScreen">
     <mat-card-header>
         <h2>{{monster2.name}}</h2>
     </mat-card-header>
     <mat-card-content>
         <div class="monsterHealth">
-            <progress id="health" value="{{monster2.currentHp}}" max="{{monster1.healthPoints}}"></progress>
+            <progress id="health" value="{{monster2.currentHp}}" max="{{monster2.healthPoints}}"></progress>
             <label for="health">{{monster2.currentHp}}/{{monster2.healthPoints}} HP</label>
         </div>
         <p>{{monster2.description}}</p>
-        <section id="battleMoves2">
+        <section id="battleMoves2" class="battleMoves">
         </section>
     </mat-card-content>
 </mat-card>

@@ -8,11 +8,28 @@
 
 :host ::ng-deep .battleMove{
     border: 1pt solid black;
-    margin: 0.5rem;
-    padding: 0.5rem;
+    margin: 1%;
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
 }
 
 :host ::ng-deep .battleMove:hover{
     color: white;
     background-color: black;
+}
+
+.monsterScreen{
+    width: 45rem;
+}
+
+.battleMoves{
+    display: flex;
+    flex-flow: wrap;
+}
+
+.battle{
+    display: flex;
+    justify-content: space-between;
 }

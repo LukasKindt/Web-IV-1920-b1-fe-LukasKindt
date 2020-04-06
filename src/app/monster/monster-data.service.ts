@@ -12,6 +12,7 @@ import { map, catchError, tap, shareReplay } from 'rxjs/operators';
 export class MonsterDataService {
   private _monsters$ = new BehaviorSubject<Monster[]>([]);
   private _monsters: Monster[];
+  private _selectedMonsters: Monster[] = [];
 
   constructor(private http: HttpClient) {
     this.monsters$
@@ -23,6 +24,11 @@ export class MonsterDataService {
       this._monsters = monsters;
       this._monsters$.next(this._monsters);
     });
+  }
+
+  get selectedMonsters(){
+    console.log(this._selectedMonsters);
+    return this._selectedMonsters;
   }
 
   get allMonsters$(): Observable<Monster[]> {
@@ -55,6 +61,11 @@ export class MonsterDataService {
       this._monsters = [...this._monsters, mon];
       this._monsters$.next(this._monsters);
     });
+  }
+
+  set selectedMonsters(monsters: Monster[]){
+    this._selectedMonsters = monsters;
+    console.log(this._selectedMonsters);
   }
 
   deleteMonster(monster: Monster){

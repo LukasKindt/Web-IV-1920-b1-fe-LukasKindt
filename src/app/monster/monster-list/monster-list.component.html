@@ -12,11 +12,9 @@
   fxLayoutGap="0.5%"
   fxLayoutAlign="start"
 >
-  <div 
-    class="monster"  
-    *ngFor="let localMonster of (monsters | monsterFilter: filterMonsterName)"
-  >
+  <div class="monsterList" *ngFor="let localMonster of (monsters | monsterFilter: filterMonsterName); let last = last;">
     <app-monster [monster]="localMonster" data-cy="monsterCard"></app-monster>
+    <span *ngIf="last">{{select()}}</span>
   </div>
 </div>
 </div>

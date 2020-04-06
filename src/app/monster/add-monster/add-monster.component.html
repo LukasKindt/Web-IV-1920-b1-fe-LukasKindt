@@ -65,31 +65,56 @@
           <mat-form-field>
             <input matInput aria-label="move name" placeholder="name" type="text"  
             formControlName="name" />
+            <mat-error
+            *ngIf="item.get('name')['errors'] && item.get('name').touched"
+          >
+            {{ getErrorMessage(item.get('name')['errors']) }}
+          </mat-error>
           </mat-form-field>
           <mat-form-field>
             <input matInput aria-label="move powerPoints" placeholder="powerPoints" type="number"  
             formControlName="powerPoints" />
+            <mat-error
+            *ngIf="item.get('powerPoints')['errors'] && item.get('powerPoints').touched"
+          >
+            {{ getErrorMessage(item.get('powerPoints')['errors']) }}
+          </mat-error>
           </mat-form-field>
           <mat-form-field>
             <input matInput aria-label="move basePower" placeholder="basePower" type="number"  
             formControlName="basePower" />
+            <mat-error
+            *ngIf="item.get('basePower')['errors'] && item.get('basePower').touched"
+          >
+            {{ getErrorMessage(item.get('basePower')['errors']) }}
+          </mat-error>
           </mat-form-field>
           <mat-form-field>
             <input matInput aria-label="move accuracy" placeholder="accuracy" type="number"  
             formControlName="accuracy" />
+            <mat-error
+            *ngIf="item.get('accuracy')['errors'] && item.get('accuracy').touched"
+          >
+            {{ getErrorMessage(item.get('accuracy')['errors']) }}
+          </mat-error>
           </mat-form-field>
           <mat-form-field>
             <input matInput aria-label="move effect" placeholder="effect" type="text"  
             formControlName="effect" />
+            <mat-error
+            *ngIf="item.get('effect')['errors'] && item.get('effect').touched"
+          >
+            {{ getErrorMessage(item.get('effect')['errors']) }}
+          </mat-error>
           </mat-form-field>
         </div>
-        <mat-error *ngIf="item.errors && item.get('name').touched">
+        <!--<mat-error *ngIf="item.errors && item.get('name').touched">
           {{ getErrorMessage(item.errors) }}
-        </mat-error>
+        </mat-error>-->
       </div>
     <button type='submit' mat-raised-button [disabled]="!monster.valid">
       add monster
     </button>
   </form>
-  </mat-card-content>
+</mat-card-content>
   </mat-card>

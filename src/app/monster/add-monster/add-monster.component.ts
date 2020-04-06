@@ -46,8 +46,9 @@ export class AddMonsterComponent implements OnInit {
     this.moves.valueChanges
     .pipe(debounceTime(400), distinctUntilChanged())
     .subscribe(movList => {
+      console.log(this.monster);
       const lastElement = movList[movList.length - 1];
-      if (lastElement.name && lastElement.name.length > 2 && movList.length < 4){
+      if (lastElement.name && lastElement.name.length >= 2 && movList.length < 4){
       this.moves.push(this.createMoves());
     } else if (movList.length >= 2) {
       const secondToLast = movList[movList.length - 2];
@@ -71,21 +72,15 @@ export class AddMonsterComponent implements OnInit {
       powerPoints: ['', [Validators.required, Validators.min(5), Validators.max(40)]],
       basePower: ['', [Validators.required, Validators.min(10), Validators.max(200)]],
       accuracy: ['', [Validators.required, Validators.min(30), Validators.max(100)]],
-      effect: ['']
+      effect: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(512)]]
     },{
-      validator: validateMoveName
+     validator: validateMoveName
     });
   }
 
-  /*addMonster(monsterId: HTMLInputElement, monsterName: HTMLInputElement, monsterDescription: HTMLInputElement, monsterAttack: HTMLInputElement, monsterDefense: HTMLInputElement, monsterHealth: HTMLInputElement, monsterSpeed: HTMLInputElement): boolean{
-    const monster = new Monster(monsterName.value, monsterDescription.value, +monsterAttack.value, +monsterDefense.value, +monsterHealth.value, +monsterSpeed.value, []);
-    this.newMonster.emit(monster);
-    return false;
-  }*/
-
   onSubmit(){
     let moves = this.monster.value.moves.map(Move.fromJSON);
-    moves = moves.filter(mov => mov.name.length > 2);
+    moves = moves.filter(mov => mov.name.length >= 2);
     this._monsterDataService.addNewMonster(
       new Monster(this.monster.value.name, this.monster.value.description, this.monster.value.attack, this.monster.value.defense, this.monster.value.hp, this.monster.value.speed, moves)
     );
@@ -108,6 +103,12 @@ export class AddMonsterComponent implements OnInit {
       return 'is required';
     } else if (errors.minlength) {
       return `needs at least ${errors.minlength.requiredLength} characters (got ${errors.minlength.actualLength})`;
+    } else if (errors.maxlength){
+      return `can only have ${errors.maxlength.requiredLength} characters (got ${errors.maxlength.actualLength})`;
+    } else if (errors.min) {
+      return `the minimum value is ${errors.min.min}`;
+    } else if (errors.max) {
+      return `the maximum value is ${errors.max.max}`;
     } else if (errors.amountNoName) {
       return `if amount is set you must set a name`;
     }

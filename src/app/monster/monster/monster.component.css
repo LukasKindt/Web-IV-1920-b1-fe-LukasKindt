@@ -7,3 +7,39 @@ mat-list-item{
     border: 1pt solid black;
     margin: 0.2rem;
 }
+
+:host ::ng-deep .selectedMonster:hover{
+    color: black;
+    background-color: white;
+}
+
+.monster:hover, :host ::ng-deep {
+    color: white;
+    background-color: black;
+}
+
+.selectedMonster, .selectedMonster:hover{
+    color: white;
+    background-color: darkblue;
+}
+
+.monster{
+    height: 92%;
+}
+
+
+.monster:hover .listMove, :host ::ng-deep .selectedMonster .listMove{
+    border: 1pt solid white;
+    color: white;
+}
+
+
+/*.monster:hover .listMove:hover, :host ::ng-deep .selectedMonster .listMove:hover{
+    color: black;
+    background-color: white;
+}*/
+
+.listMove{
+    width: 45%;
+    height: 3rem;
+}
