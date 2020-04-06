@@ -2,8 +2,17 @@
     display: flex;
 }
 
-.battleMove{
+.battle progress{
+    margin-right: 0.5rem;
+}
+
+:host ::ng-deep .battleMove{
     border: 1pt solid black;
     margin: 0.5rem;
-    padding: 1rem;
+    padding: 0.5rem;
+}
+
+:host ::ng-deep .battleMove:hover{
+    color: white;
+    background-color: black;
 }

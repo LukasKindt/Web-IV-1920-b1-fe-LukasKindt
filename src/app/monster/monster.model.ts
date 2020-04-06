@@ -28,6 +28,7 @@ export class Monster {
 
     static fromJSON(json: MonsterJson): Monster{
         const mon = new Monster(json.name, json.description, json.attack, json.defense, json.healthPoints, json.speed, json.moves.map(Move.fromJSON));
+        mon.id = json.id;
         return mon;
     }
 
@@ -45,6 +46,10 @@ export class Monster {
   
     get id(): number {
       return this._id;
+    }
+
+    set id(id: number){
+      this._id = id;
     }
     
     get name(): string {
@@ -65,6 +70,10 @@ export class Monster {
 
     get currentHp(): number{
       return this._currentHp;
+    }
+
+    set currentHp(currentHp: number){
+      this._currentHp = currentHp;
     }
 
     get healthPoints(): number{

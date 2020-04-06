@@ -35,6 +35,10 @@ get currentPp(){
     return this._currentPp;
 }
 
+set currentPp(currentPp: number){
+    this._currentPp = currentPp;
+}
+
 get powerPoints(){
     return this._powerPoints;
 }

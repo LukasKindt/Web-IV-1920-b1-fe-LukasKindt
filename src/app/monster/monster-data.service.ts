@@ -38,7 +38,7 @@ export class MonsterDataService {
     );
   }
 
-  getMonster$(id: string): Observable<Monster> {
+  getMonster$(id: number): Observable<Monster> {
     return  this.http.get(`${environment.apiUrl}/monster/${id}`)
     .pipe(tap(console.log), catchError(this.handleError), map(Monster.fromJSON));
   }

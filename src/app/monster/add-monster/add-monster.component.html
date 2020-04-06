@@ -14,7 +14,7 @@
     </mat-form-field>
     <mat-form-field>
       <input matInput aria-label="description" placeholder="description" type="text"  
-      formControlName="description" />
+      formControlName="description" required />
       <mat-error
       *ngIf="monster.get('description')['errors'] && monster.get('description').touched"
     >
@@ -23,7 +23,7 @@
     </mat-form-field>
     <mat-form-field>
       <input matInput aria-label="attack" placeholder="attack" type="number"  
-      formControlName="attack" />
+      formControlName="attack" required />
       <mat-error
       *ngIf="monster.get('attack')['errors'] && monster.get('attack').touched"
     >
@@ -32,7 +32,7 @@
     </mat-form-field>
       <mat-form-field>
         <input matInput aria-label="defense" placeholder="defense" type="number"  
-        formControlName="defense" />
+        formControlName="defense" required />
         <mat-error
         *ngIf="monster.get('defense')['errors'] && monster.get('defense').touched"
       >
@@ -41,7 +41,7 @@
       </mat-form-field>
       <mat-form-field>
         <input matInput aria-label="hp" placeholder="HP" type="number"  
-        formControlName="hp" />
+        formControlName="hp" required />
         <mat-error
         *ngIf="monster.get('hp')['errors'] && monster.get('hp').touched"
       >
@@ -50,7 +50,7 @@
       </mat-form-field>
       <mat-form-field>
         <input matInput aria-label="speed" placeholder="speed" type="number"  
-        formControlName="speed" />
+        formControlName="speed" required />
         <mat-error
         *ngIf="monster.get('speed')['errors'] && monster.get('speed').touched"
       >

@@ -34,12 +34,12 @@ export class AddMonsterComponent implements OnInit {
 
   ngOnInit(): void {
     this.monster = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      description: [''],
-      attack: [''],
-      defense: [''],
-      hp: [''],
-      speed: [''],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(16)]],
+      description: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(512)]],
+      attack: ['', [Validators.required, Validators.min(50), Validators.max(250)]],
+      defense: ['', [Validators.required, Validators.min(50), Validators.max(250)]],
+      hp: ['', [Validators.required, Validators.min(50), Validators.max(250)]],
+      speed: ['', [Validators.required, Validators.min(50), Validators.max(250)]],
       moves: this.fb.array([this.createMoves()])    
     });
 
@@ -67,10 +67,10 @@ export class AddMonsterComponent implements OnInit {
 
   createMoves(): FormGroup {
     return this.fb.group({
-      name: [''],
-      powerPoints: [''],
-      basePower: [''],
-      accuracy: [''],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(16)]],
+      powerPoints: ['', [Validators.required, Validators.min(5), Validators.max(40)]],
+      basePower: ['', [Validators.required, Validators.min(10), Validators.max(200)]],
+      accuracy: ['', [Validators.required, Validators.min(30), Validators.max(100)]],
       effect: ['']
     },{
       validator: validateMoveName
@@ -90,13 +90,13 @@ export class AddMonsterComponent implements OnInit {
       new Monster(this.monster.value.name, this.monster.value.description, this.monster.value.attack, this.monster.value.defense, this.monster.value.hp, this.monster.value.speed, moves)
     );
     this.monster = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      description: [''],
-      attack: [''],
-      defense: [''],
-      hp: [''],
-      speed: [''],
-      moves: this.fb.array([this.createMoves()])
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(16)]],
+      description: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(512)]],
+      attack: ['', [Validators.required, Validators.min(50), Validators.max(250)]],
+      defense: ['', [Validators.required, Validators.min(50), Validators.max(250)]],
+      hp: ['', [Validators.required, Validators.min(50), Validators.max(250)]],
+      speed: ['', [Validators.required, Validators.min(50), Validators.max(250)]],
+      moves: this.fb.array([this.createMoves()])  
     });
   }
 
