@@ -8,14 +8,17 @@ import { MonsterListComponent } from './monster/monster-list/monster-list.compon
 import { AddMonsterComponent } from './monster/add-monster/add-monster.component';
 import { MonsterDetailComponent } from './monster/monster-detail/monster-detail.component';
 import { MonsterResolver } from './monster/MonsterResolver';
+import { AuthGuard } from './user/auth.guard';
 
 const appRoutes: Routes = [
   {
     path: 'monster',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./monster/monster.module').then(mod => mod.MonsterModule),
     data: { preload: true }
   },
+  
   { path: '', redirectTo: 'monster/list', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

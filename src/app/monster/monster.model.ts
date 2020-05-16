@@ -1,6 +1,6 @@
 import { Move, MoveJson } from './move.model';
 
-interface  MonsterJson{
+interface MonsterJson{
   id: number;
   name: string;
   description: string;

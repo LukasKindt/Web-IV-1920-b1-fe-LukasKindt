@@ -23,6 +23,7 @@ const routes: Routes = [
   },
   { path: 'battle', component: BattleComponent }
 ];
+console.log(routes);
 @NgModule({
   declarations: [
     MonsterComponent,
