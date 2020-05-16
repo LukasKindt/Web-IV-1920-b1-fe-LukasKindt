@@ -24,7 +24,17 @@
         >
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <span>Monsterapp</span>
+        <section class="top-nav">
+          <span>Monsterapp</span>
+          <p class="welcome" id="welcome">Welcome, {{activeUser}}</p>
+          <section class="loggedOut" id="loggedOut">
+            <a class="top-navlink" mat-list-item [routerLink]="['login']">Log In</a>
+            <a class="top-navlink" mat-list-item [routerLink]="['register']">Register</a>
+          </section>
+          <section class="loggedIn" id="loggedIn">
+            <a class="top-navlink" id="logOut" mat-list-item>Log Out</a>
+          </section>
+        </section>
       </mat-toolbar>
       <ng-content></ng-content>
     </mat-sidenav-content>

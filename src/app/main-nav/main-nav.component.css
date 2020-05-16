@@ -1,0 +1,29 @@
+:host ::ng-deep .top-navlink, .welcome{
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    margin: 0.5rem;
+}
+
+:host ::ng-deep .top-navlink:hover{
+    text-decoration: underline;
+}
+
+.top-nav{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.loggedIn, .loggedOut{
+    display: flex;
+}
+
+span{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+:host ::ng-deep .hidden{
+    display: none;
+}

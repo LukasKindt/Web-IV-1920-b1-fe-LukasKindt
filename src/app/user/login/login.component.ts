@@ -34,7 +34,10 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.user = this.fb.group({
+    if (this.authService.user$.getValue()) {
+      this.router.navigate(['/monster/list']);
+    }
+      this.user = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
@@ -46,11 +49,13 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (val) => {
           if (val) {
+            console.log(window);
             if (this.authService.redirectUrl) {
+              window.location.reload();
               this.router.navigateByUrl(this.authService.redirectUrl);
               this.authService.redirectUrl = undefined;
             } else {
-              this.router.navigate(['/monster/list']);
+              window.location.reload();
             }
           } else {
             this.errorMessage = `Could not login`;

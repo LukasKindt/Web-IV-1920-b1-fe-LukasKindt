@@ -64,6 +64,9 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    if (this.authService.user$.getValue()) {
+      this.router.navigate(['/monster/list']);
+    }
     this.user = this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -126,10 +129,11 @@ export class RegisterComponent implements OnInit {
         (val) => {
           if (val) {
             if (this.authService.redirectUrl) {
+              window.location.reload();
               this.router.navigateByUrl(this.authService.redirectUrl);
               this.authService.redirectUrl = undefined;
             } else {
-              this.router.navigate(['/monster/list']);
+              window.location.reload();
             }
           } else {
             this.errorMessage = `Could not login`;
